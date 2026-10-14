@@ -6,18 +6,20 @@ import datetime
 st.set_page_config(page_title="Ultimate Portfolio & Technical Dashboard", page_icon="📈", layout="wide")
 
 st.title("📈 Ultimate Live Portfolio & Technical Analysis Dashboard")
-st.markdown("Dashboard متكاملة: أسعار لايف، تحليل فني، إمكانية التعديل اليدوي للأسعار، وإدارة المحفظة!")
+st.markdown("Dashboard متكاملة لكل أسهم السوق المصري، الأمريكي، الكริبتو، والذهب مع تحليل فني ومحفظة متقدمة!")
 
-# Default tickers dictionary (EGX, Crypto, Gold, US Stocks)
+# قائمة موسعة تشمل أسهم السوق الأمريكي (NVDA, INTC, AAPL, MSFT) والمصري والبتكوين
 default_tickers = {
+    "Nvidia (US)": "NVDA",
+    "Intel (US)": "INTC",
+    "Apple (US)": "AAPL",
+    "Microsoft (US)": "MSFT",
     "CIB (EGX)": "COMI.CA",
     "TMG (EGX)": "TMGH.CA",
     "Edita (EGX)": "EFID.CA",
     "Bitcoin": "BTC-USD",
     "Ethereum": "ETH-USD",
-    "Gold": "GC=F",
-    "Apple": "AAPL",
-    "Microsoft": "MSFT"
+    "Gold": "GC=F"
 }
 
 st.sidebar.header("⚙️ Control & Settings")
@@ -92,7 +94,7 @@ if df is not None and not df.empty:
             signal_color = "green"
         elif current_price < sma20 and sma20 < sma50:
             signal = "هابط سلبي (Bearish) 🔻"
-            signal_color.red = "red"
+            signal_color = "red"
 
         st.markdown(f"**الاتجاه العام الحالي (Trend):** :{signal_color}[{signal}]")
         
